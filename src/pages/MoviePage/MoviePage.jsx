@@ -1,7 +1,11 @@
-import React from 'react';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 function MoviePage() {
-  return <div>MoviePage</div>;
+  return (
+    <div>
+      <SearchBar />
+    </div>
+  );
 }
 
 export default MoviePage;

@@ -9,14 +9,15 @@
 }
 
 .NavLink {
-  /* color: rgb(44, 231, 6); */
+  color: rgb(22, 2, 77);
   text-decoration: none;
   font-size: 30px;
-  /* display: inline-flex; */
-  /* justify-content: space-between; */
-  /* row-gap: 30px; */
-
   font-weight: 500;
+}
+
+.NavLink:hover,
+.NavLink:focus {
+  color: rgb(255, 0, 0);
 }
 
 .active {
@@ -25,4 +26,9 @@
   text-decoration: none;
   font-size: 30px;
   text-shadow: 1px 1px 2px red, 0 0 1em green, 0 0 0.2em blue;
+}
+
+.active:hover,
+.active:focus {
+  color: rgb(255, 0, 0);
 }
