@@ -1,0 +1,28 @@
+/* .Header {
+  
+} */
+
+.NavPart {
+  display: flex;
+  justify-content: flex-start;
+  column-gap: 100px;
+}
+
+.NavLink {
+  /* color: rgb(44, 231, 6); */
+  text-decoration: none;
+  font-size: 30px;
+  /* display: inline-flex; */
+  /* justify-content: space-between; */
+  /* row-gap: 30px; */
+
+  font-weight: 500;
+}
+
+.active {
+  color: #b75767;
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 30px;
+  text-shadow: 1px 1px 2px red, 0 0 1em green, 0 0 0.2em blue;
+}

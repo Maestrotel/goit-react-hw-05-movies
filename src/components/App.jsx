@@ -1,13 +1,41 @@
-import { Routes, Route } from 'react-router-dom';
+import CastPage from 'pages/CastPage/CastPage';
+import DetailsMoviePage from 'pages/DetailsMoviePage/DetailsMoviePage';
+import HomePage from 'pages/HomePage/HomePage';
+import MoviePage from 'pages/MoviePage/MoviePage';
+import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+import ReviewPage from 'pages/ReviewPage/ReviewPage';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import css from '../components/App.module.css';
 
 export const App = () => {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/products" element={<Products />} />
-      </Routes>
-    </div>
+    <>
+      <header className={css.Header}>
+        <nav className={css.NavPart}>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? css.active : css.NavLink)}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/movies"
+            className={({ isActive }) => (isActive ? css.active : css.NavLink)}
+          >
+            Movies
+          </NavLink>
+        </nav>
+      </header>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/movies/:movieId" element={<DetailsMoviePage />} />
+          <Route path="/movies/:movieId/cast" element={<CastPage />} />
+          <Route path="/movies/:movieId/reviews" element={<ReviewPage />} />
+        </Routes>
+      </div>
+    </>
   );
 };
