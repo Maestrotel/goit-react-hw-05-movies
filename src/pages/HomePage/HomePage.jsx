@@ -1,6 +1,6 @@
 // import Loading from 'components/Loading/Loading';
 
-import AppList from 'components/AppList/AppList';
+import MovieList from 'components/MovieList/MovieList';
 
 import React, { useEffect, useState } from 'react';
 import { getTrendingMovies } from 'services/api';
@@ -32,7 +32,7 @@ function HomePage() {
     <div>
       <div>
         <h1>Trending today</h1>
-        <AppList movies={trends} />
+        <MovieList movies={trends} />
       </div>
     </div>
   );
