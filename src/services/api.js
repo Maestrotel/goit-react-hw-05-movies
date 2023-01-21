@@ -13,30 +13,28 @@ const filmsAPI = axios.create({
 });
 
 export const getTrendingMovies = async () => {
-  const trending = await filmsAPI.get('/trending/movie/week');
-  return trending.data.results;
+  const { data } = await filmsAPI.get('/trending/movie/week');
+  return data.results;
 };
 
 export const getMovies = async query => {
-  const search = await filmsAPI.get('/search/movie', {
+  const { data } = await filmsAPI.get('/search/movie', {
     params: { query },
   });
-  console.log(search.data.results);
-  return search.data.results;
+  return data.results;
 };
 
-export const getInfo = async id => {
-  const information = await filmsAPI.get(`/movies/${id}`);
-  console.log(information.data.results);
-  return information.data.results;
+export const getFilmDetails = async id => {
+  const { data } = await filmsAPI.get(`/movies/${id}`);
+  return data.results;
 };
 
 // export const getCast = async id => {
-//   const credits = await filmsAPI.get(`/movie/${id}/credits`);
-//   return credits.data;
+//   const { data } = await filmsAPI.get(`/movie/${id}/credits`);
+//   return data;
 // };
 
 // export const getReviews = async id => {
-//   const reviews = await filmsAPI.get(`/movie/${id}/reviews`);
-//   return reviews.data;
+//   const { data } = await filmsAPI.get(`/movie/${id}/reviews`);
+//   return data;
 // };

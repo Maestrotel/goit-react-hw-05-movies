@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getInfo } from 'services/api';
+import { getFilmDetails } from 'services/api';
 
 function DetailsMoviePage() {
   const [details, setDetails] = useState([]);
@@ -14,7 +14,7 @@ function DetailsMoviePage() {
     const fetchDetails = async infoId => {
       try {
         setIsLoading(true);
-        const receivedDetails = await getInfo(infoId);
+        const receivedDetails = await getFilmDetails(infoId);
         setDetails(receivedDetails);
       } catch (err) {
         setError(err.message);

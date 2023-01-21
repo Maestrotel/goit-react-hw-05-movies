@@ -1,12 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function AppList({ movies }) {
+function MovieList({ moviesRoaster }) {
   return (
     <ul>
-      {movies.map(f => {
+      {moviesRoaster.map(f => {
         return (
-          <Link key={f.id} className="moviesStyle" to={`/movie/${f.id}`}>
+          <Link key={f.id} className="moviesStyle" to={`/movies/${f.id}`}>
             <h2>{f.name || f.title}</h2>
           </Link>
         );
@@ -15,4 +16,14 @@ function AppList({ movies }) {
   );
 }
 
-export default AppList;
+export default MovieList;
+
+MovieList.propTypes = {
+  moviesRoaster: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+      name: PropTypes.string,
+      title: PropTypes.string,
+    }).isRequired
+  ).isRequired,
+};

@@ -6,25 +6,35 @@ import React, { useEffect, useState } from 'react';
 import { getTrendingMovies } from 'services/api';
 
 function HomePage() {
-  const [trends, setTrends] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [trendingMovies, setTrendingMovies] = useState([]);
 
   useEffect(() => {
     const fetchTrends = async () => {
-      try {
-        setIsLoading(true);
-        const receivedTrends = await getTrendingMovies();
-        setTrends(receivedTrends);
-      } catch (err) {
-        setError(err.message);
-        console.log(err.message);
-      } finally {
-        setIsLoading(false);
-      }
+      const trending = await getTrendingMovies();
+      console.log(trending);
+      setTrendingMovies(trending);
     };
     fetchTrends();
   }, []);
+  // const [trends, setTrends] = useState([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [error, setError] = useState('');
+
+  // useEffect(() => {
+  //   const fetchTrends = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const receivedTrends = await getTrendingMovies();
+  //       setTrends(receivedTrends);
+  //     } catch (err) {
+  //       setError(err.message);
+  //       console.log(err.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   fetchTrends();
+  // }, []);
 
   // const [loading, setLoading] = useState(false);
   return (
@@ -32,7 +42,7 @@ function HomePage() {
     <div>
       <div>
         <h1>Trending today</h1>
-        <MovieList movies={trends} />
+        <MovieList moviesRoaster={trendingMovies} />
       </div>
     </div>
   );
