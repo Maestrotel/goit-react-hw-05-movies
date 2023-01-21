@@ -30,10 +30,13 @@ function CastPage() {
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
       {Array.isArray(movieCast) &&
-        movieCast?.map(({ id, name, photo }) => {
+        movieCast?.map(({ id, name, profile_path }) => {
           return (
             <li key={id}>
-              <img src={photo} alt={name} />
+              <img
+                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                alt={name}
+              />
             </li>
           );
         })}

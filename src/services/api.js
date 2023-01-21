@@ -31,7 +31,6 @@ export const getFilmDetails = async id => {
 
 export const getCast = async id => {
   const { data } = await filmsAPI.get(`/movie/${id}/credits`);
-  console.log(data);
   return data.cast;
 };
 
