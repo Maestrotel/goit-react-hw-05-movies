@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 function MovieList({ moviesRoaster }) {
   return (
     <ul>
-      {moviesRoaster.map(f => {
-        return (
-          <Link key={f.id} className="moviesStyle" to={`/movies/${f.id}`}>
-            <h2>{f.name || f.title}</h2>
-          </Link>
-        );
-      })}
+      {Array.isArray(moviesRoaster) &&
+        moviesRoaster.map(f => {
+          return (
+            <Link key={f.id} className="moviesStyle" to={`/movies/${f.id}`}>
+              <h2>{f.name || f.title}</h2>
+            </Link>
+          );
+        })}
     </ul>
   );
 }
