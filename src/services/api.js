@@ -17,7 +17,7 @@ export const getTrendingMovies = async () => {
   return data.results;
 };
 
-export const getMovies = async query => {
+export const getMoviesByQuery = async query => {
   const { data } = await filmsAPI.get('/search/movie', {
     params: { query },
   });
