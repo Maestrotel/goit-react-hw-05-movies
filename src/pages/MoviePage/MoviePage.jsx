@@ -2,20 +2,22 @@ import Loader from 'components/Loader/Loader';
 import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { getMoviesByQuery } from 'services/api';
+import { useSearchParams } from 'react-router-dom';
 
 function MoviePage() {
   const [films, setFilms] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
-
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query');
+  console.log(query);
 
   useEffect(() => {
-    if (searchValue.trim() === '') return;
-    const fetchTrends = async searchValue => {
+    if (!query?.trim()) return;
+    const fetchTrends = async query => {
       try {
         setIsLoading(true);
-        const receivedFilms = await getMoviesByQuery(searchValue);
+        const receivedFilms = await getMoviesByQuery(query);
         setFilms(receivedFilms);
       } catch (error) {
         setError(error.message);
@@ -23,12 +25,12 @@ function MoviePage() {
         setIsLoading(false);
       }
     };
-    fetchTrends(searchValue);
-  }, [searchValue]);
+    fetchTrends(query);
+  }, [query]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchValue(e.currentTarget.search.value);
+    setSearchParams({ query: e.currentTarget.search.value });
     e.target.reset();
   };
 

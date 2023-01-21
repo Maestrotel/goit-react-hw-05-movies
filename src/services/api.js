@@ -25,14 +25,15 @@ export const getMoviesByQuery = async query => {
 };
 
 export const getFilmDetails = async id => {
-  const { data } = await filmsAPI.get(`/movies/${id}`);
-  return data.results;
+  const { data } = await filmsAPI.get(`/movie/${id}`);
+  return data;
 };
 
-// export const getCast = async id => {
-//   const { data } = await filmsAPI.get(`/movie/${id}/credits`);
-//   return data;
-// };
+export const getCast = async id => {
+  const { data } = await filmsAPI.get(`/movie/${id}/credits`);
+  console.log(data);
+  return data.cast;
+};
 
 // export const getReviews = async id => {
 //   const { data } = await filmsAPI.get(`/movie/${id}/reviews`);

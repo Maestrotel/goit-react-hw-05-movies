@@ -1,7 +1,7 @@
 import React from 'react';
 
-function ReviewPage() {
-  return <div>ReviewPage</div>;
+function ReviewsPage() {
+  return <div>ReviewsPage</div>;
 }
 
-export default ReviewPage;
+export default ReviewsPage;
