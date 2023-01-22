@@ -34,7 +34,7 @@ export const getCast = async id => {
   return data.cast;
 };
 
-// export const getReviews = async id => {
-//   const { data } = await filmsAPI.get(`/movie/${id}/reviews`);
-//   return data;
-// };
+export const getReviews = async id => {
+  const { data } = await filmsAPI.get(`/movie/${id}/reviews`);
+  return data.results;
+};
