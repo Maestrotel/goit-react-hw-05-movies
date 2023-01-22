@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
+import css from './MovieList.module.css';
 
 function MovieList({ moviesRoaster }) {
   const location = useLocation();
@@ -12,7 +13,7 @@ function MovieList({ moviesRoaster }) {
             <Link
               state={{ from: location }}
               key={f.id}
-              className="moviesStyle"
+              className={css.linkStyle}
               to={`/movies/${f.id}`}
             >
               <h2>{f.name || f.title}</h2>

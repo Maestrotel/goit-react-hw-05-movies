@@ -9,10 +9,12 @@
 }
 
 .NavLink {
-  color: rgb(22, 2, 77);
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-size: 30px;
   font-weight: 500;
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .NavLink:hover,
@@ -25,7 +27,10 @@
   font-weight: 500;
   text-decoration: none;
   font-size: 30px;
-  text-shadow: 1px 1px 2px red, 0 0 1em green, 0 0 0.2em blue;
+  text-shadow: 1px 1px 2px red, 0 0 1em rgb(255, 255, 255),
+    0 0 0.2em rgb(238, 255, 0);
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 .active:hover,
