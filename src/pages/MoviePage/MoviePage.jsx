@@ -3,6 +3,7 @@ import MovieList from 'components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import { getMoviesByQuery } from 'services/api';
 import { useSearchParams } from 'react-router-dom';
+import css from './MoviePage.module.css';
 
 function MoviePage() {
   const [films, setFilms] = useState([]);
@@ -37,15 +38,17 @@ function MoviePage() {
     <div>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
-      <form onSubmit={handleSubmit}>
+      <form className={css.formStyle} onSubmit={handleSubmit}>
         <input
+          className={css.inputStyle}
           name="search"
           type="text"
           autoComplete="off"
-          // value={searchQuery}
-          // onChange={handleInput}
+          placeholder="Search movies"
         />
-        <button type="submit">Search</button>
+        <button className={css.buttonStyle} type="submit">
+          Search
+        </button>
       </form>
       <MovieList moviesRoaster={films} />
     </div>

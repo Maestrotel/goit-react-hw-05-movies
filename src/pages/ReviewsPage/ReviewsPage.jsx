@@ -2,6 +2,7 @@ import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/api';
+import css from './ReviewsPage.module.css';
 
 function ReviewsPage() {
   const [movieReviews, setMovieRexiews] = useState([]);
@@ -25,13 +26,11 @@ function ReviewsPage() {
     fetchFilmReviews(movieId);
   }, [movieId]);
 
-  // console.log(movieReviews.length);
-
   return (
     <>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
-      <ul>
+      <ul className={css.reviewsStyle}>
         {Array.isArray(movieReviews) &&
           movieReviews?.map(f => {
             return (
@@ -46,7 +45,5 @@ function ReviewsPage() {
     </>
   );
 }
-
-//          <p>No reviews for this movie</p>
 
 export default ReviewsPage;

@@ -2,6 +2,7 @@ import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { Link, Route, Routes, useParams, useLocation } from 'react-router-dom';
 import { getFilmDetails } from 'services/api';
+import css from './DetailsMoviePage.module.css';
 
 const CastPage = lazy(() => import('pages/CastPage/CastPage'));
 const ReviewsPage = lazy(() => import('pages/ReviewsPage/ReviewsPage'));
@@ -30,8 +31,10 @@ function DetailsMoviePage() {
   }, [movieId]);
 
   return (
-    <div>
-      <Link to={location?.state?.from ?? '/'}>Go Back</Link>
+    <div className={css.backBtnCon}>
+      <Link className={css.backBtn} to={location?.state?.from ?? '/'}>
+        Go Back
+      </Link>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
       <div>
@@ -39,6 +42,7 @@ function DetailsMoviePage() {
           <div>
             <div>
               <img
+                className={css.posterStyle}
                 src={
                   movieInfo?.poster_path
                     ? `https://image.tmdb.org/t/p/w500${movieInfo?.poster_path}`
@@ -63,11 +67,19 @@ function DetailsMoviePage() {
             </div>
           </div>
         )}
-        <h2>Additional information</h2>
-        <Link state={{ from: location?.state?.from ?? '/' }} to="cast">
+        <h2 className={css.infoStyle}>Additional information</h2>
+        <Link
+          className={css.castStyle}
+          state={{ from: location?.state?.from ?? '/' }}
+          to="cast"
+        >
           Cast
         </Link>
-        <Link state={{ from: location?.state?.from ?? '/' }} to="reviews">
+        <Link
+          className={css.revStyle}
+          state={{ from: location?.state?.from ?? '/' }}
+          to="reviews"
+        >
           Reviews
         </Link>
         <Suspense fallback={<Loader />}>

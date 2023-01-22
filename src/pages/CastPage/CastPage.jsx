@@ -2,6 +2,7 @@ import Loader from 'components/Loader/Loader';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCast } from 'services/api';
+import css from './CastPage.module.css';
 
 function CastPage() {
   const [movieCast, setMovieCast] = useState([]);
@@ -35,6 +36,7 @@ function CastPage() {
             return (
               <li key={id}>
                 <img
+                  className={css.imageStyle}
                   src={
                     profile_path
                       ? `https://image.tmdb.org/t/p/w500${profile_path}`

@@ -1,0 +1,47 @@
+.backBtn,
+.backBtn:active {
+  color: #fff;
+  margin-left: 40px;
+  text-decoration: none;
+  background-color: blueviolet;
+  padding: 10px 20px;
+}
+
+.backBtn:hover,
+.backBtn:focus {
+  background-color: rgb(255, 230, 0);
+}
+
+.backBtnCon {
+  color: rgb(255, 0, 13);
+  margin-left: 30px;
+  margin-bottom: 100px;
+  text-shadow: 1px 1px 2px rgb(7, 7, 7), 0 0 1em rgb(26, 31, 26);
+}
+
+.infoStyle {
+  color: blue;
+}
+
+.posterStyle {
+  margin-top: 30px;
+}
+
+.castStyle {
+  font-size: 36px;
+  margin-right: 50px;
+}
+
+.castStyle:hover,
+.castStyle:focus {
+  color: rgb(217, 255, 0);
+}
+
+.revStyle {
+  font-size: 36px;
+}
+
+.revStyle:hover,
+.revStyle:focus {
+  color: rgb(217, 255, 0);
+}
