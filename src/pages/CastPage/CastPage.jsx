@@ -29,22 +29,24 @@ function CastPage() {
     <>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
-      {Array.isArray(movieCast) &&
-        movieCast?.map(({ id, name, profile_path }) => {
-          return (
-            <li key={id}>
-              <img
-                src={
-                  profile_path
-                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                    : 'https://upload.wikimedia.org/wikipedia/commons/2/2f/No-photo-m.png'
-                }
-                alt={name}
-              />
-              <h3>{name}</h3>
-            </li>
-          );
-        })}
+      <ul>
+        {Array.isArray(movieCast) &&
+          movieCast?.map(({ id, name, profile_path }) => {
+            return (
+              <li key={id}>
+                <img
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                      : 'https://upload.wikimedia.org/wikipedia/commons/2/2f/No-photo-m.png'
+                  }
+                  alt={name}
+                />
+                <h3>{name}</h3>
+              </li>
+            );
+          })}
+      </ul>
     </>
   );
 }

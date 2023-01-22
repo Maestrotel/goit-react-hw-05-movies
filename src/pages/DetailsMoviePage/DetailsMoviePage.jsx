@@ -2,7 +2,7 @@ import Loader from 'components/Loader/Loader';
 import CastPage from 'pages/CastPage/CastPage';
 import ReviewsPage from 'pages/ReviewsPage/ReviewsPage';
 import React, { useEffect, useState } from 'react';
-import { Link, Route, Routes, useParams } from 'react-router-dom';
+import { Link, Route, Routes, useParams, useLocation } from 'react-router-dom';
 import { getFilmDetails } from 'services/api';
 
 function DetailsMoviePage() {
@@ -10,6 +10,7 @@ function DetailsMoviePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     if (!movieId) return;
@@ -29,6 +30,7 @@ function DetailsMoviePage() {
 
   return (
     <div>
+      <Link to={location?.state?.from ?? '/'}>Go Back</Link>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
       <div>
@@ -61,8 +63,12 @@ function DetailsMoviePage() {
           </div>
         )}
         <h2>Additional information</h2>
-        <Link to="cast">Cast</Link>
-        <Link to="reviews">Reviews</Link>
+        <Link state={{ from: location?.state?.from ?? '/' }} to="cast">
+          Cast
+        </Link>
+        <Link state={{ from: location?.state?.from ?? '/' }} to="reviews">
+          Reviews
+        </Link>
         <Routes>
           <Route path="cast" element={<CastPage />} />
           <Route path="reviews" element={<ReviewsPage />} />

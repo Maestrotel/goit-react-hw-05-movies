@@ -10,7 +10,6 @@ function MoviePage() {
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
-  console.log(query);
 
   useEffect(() => {
     if (!query?.trim()) return;
