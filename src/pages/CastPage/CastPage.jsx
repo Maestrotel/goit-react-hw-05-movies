@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getCast } from 'services/api';
 
 function CastPage() {
-  const [movieCast, setMovieCast] = useState(null);
+  const [movieCast, setMovieCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
@@ -34,9 +34,14 @@ function CastPage() {
           return (
             <li key={id}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                    : 'https://upload.wikimedia.org/wikipedia/commons/2/2f/No-photo-m.png'
+                }
                 alt={name}
               />
+              <h3>{name}</h3>
             </li>
           );
         })}

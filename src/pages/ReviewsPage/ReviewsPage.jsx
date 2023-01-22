@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/api';
 
 function ReviewsPage() {
-  const [movieReviews, setMovieRexiews] = useState(null);
+  const [movieReviews, setMovieRexiews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
@@ -25,23 +25,28 @@ function ReviewsPage() {
     fetchFilmReviews(movieId);
   }, [movieId]);
 
-  console.log(movieReviews);
+  // console.log(movieReviews.length);
 
   return (
     <>
       {error !== null && <p>Something went wrong {error}</p>}
       {isLoading && <Loader />}
-      {Array.isArray(movieReviews) &&
-        movieReviews?.map(f => {
-          return (
-            <li key={f.id}>
-              <h3>{f.author}</h3>
-              <p>{f.content}</p>
-            </li>
-          );
-        })}
+      <ul>
+        {Array.isArray(movieReviews) &&
+          movieReviews?.map(f => {
+            return (
+              <li key={f.id}>
+                <h3>{f.author}</h3>
+                <p>{f.content}</p>
+              </li>
+            );
+          })}
+      </ul>
+      {movieReviews.length === 0 && <p>No reviews for this movie</p>}
     </>
   );
 }
+
+//          <p>No reviews for this movie</p>
 
 export default ReviewsPage;
