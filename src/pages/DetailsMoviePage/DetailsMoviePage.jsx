@@ -1,9 +1,10 @@
 import Loader from 'components/Loader/Loader';
-import CastPage from 'pages/CastPage/CastPage';
-import ReviewsPage from 'pages/ReviewsPage/ReviewsPage';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { Link, Route, Routes, useParams, useLocation } from 'react-router-dom';
 import { getFilmDetails } from 'services/api';
+
+const CastPage = lazy(() => import('pages/CastPage/CastPage'));
+const ReviewsPage = lazy(() => import('pages/ReviewsPage/ReviewsPage'));
 
 function DetailsMoviePage() {
   const [movieInfo, setMovieInfo] = useState(null);
@@ -69,10 +70,12 @@ function DetailsMoviePage() {
         <Link state={{ from: location?.state?.from ?? '/' }} to="reviews">
           Reviews
         </Link>
-        <Routes>
-          <Route path="cast" element={<CastPage />} />
-          <Route path="reviews" element={<ReviewsPage />} />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="cast" element={<CastPage />} />
+            <Route path="reviews" element={<ReviewsPage />} />
+          </Routes>
+        </Suspense>
       </div>
     </div>
   );
